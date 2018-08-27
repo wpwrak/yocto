@@ -47,11 +47,11 @@ SYSROOT_DIRS += "${PLATFORM_INIT_DIR}"
 do_install() {
     fn=$(unzip -l ${S}/${HDF} | awk '{print $NF}' | grep ".bit$")
     unzip -o ${S}/${HDF} ${fn} -d ${D}
-    [ "${fn}" == "download.bit" ] || mv ${D}/${fn} ${D}/download.bit
+    [ "${fn}" = "download.bit" ] || mv ${D}/${fn} ${D}/download.bit
 
     fn=$(unzip -l ${S}/${HDF} | awk '{print $NF}' | grep "ps7_init.tcl$")
     unzip -o ${S}/${HDF} ${fn} -d ${D}
-    [ "${fn}" == "ps7_init.tcl" ] || mv ${D}/${fn} ${D}/ps7_init.tcl
+    [ "${fn}" = "ps7_init.tcl" ] || mv ${D}/${fn} ${D}/ps7_init.tcl
 
     install -d ${D}${PLATFORM_INIT_DIR}
     for fn in ${PLATFORM_INIT_FILES}; do
